@@ -1,0 +1,6 @@
+*.odf
+*.exe
+*.pdb
+Code/Ouda/Ouda.Client/bin/
+Code/Ouda/Ouda.Client/obj/
+*.userprefs

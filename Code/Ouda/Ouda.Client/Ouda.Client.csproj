@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{1AB1816E-336E-4B1D-A7E7-96C94E063A67}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Ouda.Client</RootNamespace>
+    <AssemblyName>Ouda.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\CreateSpreadsheetsControl.cs" />
+    <Compile Include="Controls\CreateSpreadsheetsControl.Designer.cs">
+      <DependentUpon>CreateSpreadsheetsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InputNewPersonControl.cs" />
+    <Compile Include="Controls\InputNewPersonControl.Designer.cs">
+      <DependentUpon>InputNewPersonControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsEditorForm.cs" />
+    <Compile Include="Controls\SettingsEditorForm.Designer.cs">
+      <DependentUpon>SettingsEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpecifyLocationForm.cs" />
+    <Compile Include="Controls\SpecifyLocationForm.Designer.cs">
+      <DependentUpon>SpecifyLocationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpreadsheetCreatorForm.cs" />
+    <Compile Include="Controls\SpreadsheetCreatorForm.Designer.cs">
+      <DependentUpon>SpreadsheetCreatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\PersonData.cs" />
+    <Compile Include="Logic\SpreadsheetCreator.cs" />
+    <Compile Include="Logic\DataManager.cs" />
+    <Compile Include="Logic\IOudaSerializer.cs" />
+    <Compile Include="Logic\JsonSerializer.cs" />
+    <Compile Include="Logic\Settings.cs" />
+    <Compile Include="Logic\SettingsManager.cs" />
+    <Compile Include="Logic\XmlSerializer.cs" />
+    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\CreateSpreadsheetsControl.resx">
+      <DependentUpon>CreateSpreadsheetsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InputNewPersonControl.resx">
+      <DependentUpon>InputNewPersonControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SettingsEditorForm.resx">
+      <DependentUpon>SettingsEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SpecifyLocationForm.resx">
+      <DependentUpon>SpecifyLocationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SpreadsheetCreatorForm.resx">
+      <DependentUpon>SpreadsheetCreatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
