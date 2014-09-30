@@ -38,7 +38,8 @@ namespace Ouda.Client.Controls
 		private System.Windows.Forms.ComboBox combo_hepB;
 		private System.Windows.Forms.TextBox tb_comment;
 		private System.Windows.Forms.Label lbl_time;
-		private System.Windows.Forms.Label lbl_location;
+		private System.Windows.Forms.ComboBox combo_gender;
+		private System.Windows.Forms.TextBox tb_location;
 		
 		/// <summary>
 		/// Disposes resources used by the control.
@@ -85,7 +86,8 @@ namespace Ouda.Client.Controls
 			this.combo_hepB = new System.Windows.Forms.ComboBox();
 			this.tb_comment = new System.Windows.Forms.TextBox();
 			this.lbl_time = new System.Windows.Forms.Label();
-			this.lbl_location = new System.Windows.Forms.Label();
+			this.combo_gender = new System.Windows.Forms.ComboBox();
+			this.tb_location = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.num_age)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_height)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_weight)).BeginInit();
@@ -197,7 +199,7 @@ namespace Ouda.Client.Controls
 			this.tb_name.Location = new System.Drawing.Point(109, 43);
 			this.tb_name.Name = "tb_name";
 			this.tb_name.Size = new System.Drawing.Size(154, 20);
-			this.tb_name.TabIndex = 1;
+			this.tb_name.TabIndex = 0;
 			this.tb_name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// num_age
@@ -209,8 +211,8 @@ namespace Ouda.Client.Controls
 			0,
 			0});
 			this.num_age.Name = "num_age";
-			this.num_age.Size = new System.Drawing.Size(154, 20);
-			this.num_age.TabIndex = 2;
+			this.num_age.Size = new System.Drawing.Size(72, 20);
+			this.num_age.TabIndex = 1;
 			this.num_age.Enter += new System.EventHandler(this.NumericUpDown_Enter);
 			this.num_age.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
@@ -309,9 +311,9 @@ namespace Ouda.Client.Controls
 			this.combo_hepB.Name = "combo_hepB";
 			this.combo_hepB.Size = new System.Drawing.Size(154, 21);
 			this.combo_hepB.TabIndex = 10;
-			this.combo_hepB.Enter += new System.EventHandler(this.Combo_hepBEnter);
+			this.combo_hepB.Enter += new System.EventHandler(this.Combo_Enter);
 			this.combo_hepB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
-			this.combo_hepB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Combo_hepBKeyPress);
+			this.combo_hepB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Combo_KeyPress);
 			// 
 			// tb_comment
 			// 
@@ -330,18 +332,33 @@ namespace Ouda.Client.Controls
 			this.lbl_time.TabIndex = 12;
 			this.lbl_time.Text = "-time-";
 			// 
-			// lbl_location
+			// combo_gender
 			// 
-			this.lbl_location.Location = new System.Drawing.Point(109, 23);
-			this.lbl_location.Name = "lbl_location";
-			this.lbl_location.Size = new System.Drawing.Size(100, 23);
-			this.lbl_location.TabIndex = 13;
-			this.lbl_location.Text = "-location-";
+			this.combo_gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.combo_gender.FormattingEnabled = true;
+			this.combo_gender.Location = new System.Drawing.Point(187, 66);
+			this.combo_gender.Name = "combo_gender";
+			this.combo_gender.Size = new System.Drawing.Size(76, 21);
+			this.combo_gender.TabIndex = 2;
+			this.combo_gender.Enter += new System.EventHandler(this.Combo_Enter);
+			this.combo_gender.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
+			this.combo_gender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Combo_KeyPress);
+			// 
+			// tb_location
+			// 
+			this.tb_location.Location = new System.Drawing.Point(109, 20);
+			this.tb_location.Name = "tb_location";
+			this.tb_location.Size = new System.Drawing.Size(154, 20);
+			this.tb_location.TabIndex = 13;
+			this.tb_location.TabStop = false;
+			this.tb_location.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// InputNewPersonControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.tb_location);
+			this.Controls.Add(this.combo_gender);
 			this.Controls.Add(this.lbl_time);
 			this.Controls.Add(this.num_bpDia);
 			this.Controls.Add(this.num_bpSys);
@@ -366,7 +383,6 @@ namespace Ouda.Client.Controls
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.lbl_location);
 			this.Name = "InputNewPersonControl";
 			this.Size = new System.Drawing.Size(266, 321);
 			((System.ComponentModel.ISupportInitialize)(this.num_age)).EndInit();

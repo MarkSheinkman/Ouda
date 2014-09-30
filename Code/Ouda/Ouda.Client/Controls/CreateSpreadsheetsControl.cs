@@ -101,7 +101,24 @@ namespace Ouda.Client.Controls
 			{
 				if(dialog.ShowDialog() == DialogResult.OK)
 				{
-					creator.Create(dialog.FileName, m_FilteredPeople);
+					bool retry = true;
+					while(retry)
+					{
+						retry = false;
+						try
+						{
+							creator.Create(dialog.FileName, m_FilteredPeople);
+						} 
+						catch (Exception ex)
+						{
+							retry = MessageBox.Show(
+								this.FindForm(), 
+								"Exception: " + ex.Message, 
+								"Error creating spreadsheet",
+								MessageBoxButtons.RetryCancel,
+								MessageBoxIcon.Error) == DialogResult.Retry;
+						}
+					}
 				}
 			}
 		}

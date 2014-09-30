@@ -23,10 +23,12 @@ namespace Ouda.Client.Controls
 		{
 			InitializeComponent();
 			
+			combo_gender.DataSource = Enum.GetValues(typeof(Gender));
+			combo_gender.SelectedItem = Gender.Unspecified;
+			
 			combo_hepB.DataSource = Enum.GetValues(typeof(HepBResult));
 			combo_hepB.SelectedItem = HepBResult.Inconclusive;
 		}
-
 
 		#region gui event handlers
 		
@@ -48,14 +50,14 @@ namespace Ouda.Client.Controls
 			SelectTextOfNumUpDown(num);
 		}
 		
-		void Combo_hepBEnter(object sender, EventArgs e)
+		void Combo_Enter(object sender, EventArgs e)
 		{
-			combo_hepB.DroppedDown = true;
+			((ComboBox)sender).DroppedDown = true;
 		}
 		
-		void Combo_hepBKeyPress(object sender, KeyPressEventArgs e)
+		void Combo_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			e.Handled = TrySelectIndex(combo_hepB, e.KeyChar);
+			e.Handled = TrySelectIndex((ComboBox)sender, e.KeyChar);
 		}
 		
 		#endregion
@@ -100,15 +102,16 @@ namespace Ouda.Client.Controls
 		
 		public void Setup(string location)
 		{
-			lbl_location.Text = location;
+			tb_location.Text = location;
 		}
 		
 		public void Reset()
 		{
 			lbl_time.Text = "";
-			lbl_location.Text = "";
+			tb_location.Text = "";
 			tb_name.Text = "";
 			num_age.Value = 0;
+			combo_gender.SelectedItem = Gender.Unspecified;
 			num_height.Value = 0;
 			num_weight.Value = 0;
 			num_bodyFat.Value = 0;
@@ -126,9 +129,10 @@ namespace Ouda.Client.Controls
 			{
 				Id = Guid.NewGuid(),
 				Time = DateTime.Now,
-				Location = lbl_location.Text,
+				Location = tb_location.Text,
 				Name = tb_name.Text,
 				Age = (int)num_age.Value,
+				Gender = ReadEnumValue<Gender>(combo_gender),
 				Height = (int)num_height.Value,
 				Weight = (double)num_weight.Value,
 				BodyFat = (double)num_bodyFat.Value,
@@ -136,11 +140,16 @@ namespace Ouda.Client.Controls
 				BloodPressureSys = (double)num_bpSys.Value,
 				BloodPressureDia = (double)num_bpDia.Value,
 				BloodSugar = (double)num_bodyFat.Value,
-				HepB = (HepBResult)Enum.Parse(typeof(HepBResult), combo_hepB.SelectedItem.ToString()),
+				HepB = ReadEnumValue<HepBResult>(combo_hepB),
 				Comment = tb_comment.Text,
 			};
 			
 			return person;
+		}
+		
+		private T ReadEnumValue<T>(ComboBox comboBox)
+		{
+			return (T)Enum.Parse(typeof(T), comboBox.SelectedItem.ToString());
 		}
 	}
 }
