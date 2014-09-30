@@ -18,6 +18,7 @@ namespace Ouda.Client.Domain
 		public string Location {get;set;}
 		public string Name {get;set;}
 		public int Age { get; set; }
+		public Gender Gender { get;set; }
 		public int Height {get; set;}
 		public double Weight { get; set; }
 		public double BodyFat { get; set; }
@@ -30,4 +31,6 @@ namespace Ouda.Client.Domain
 	}
 	
 	public enum HepBResult{Positive, Negative, Inconclusive, Vaccinated}
+	
+	public enum Gender {Unspecified, Male, Female, Other}
 }
