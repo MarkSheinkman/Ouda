@@ -5,6 +5,7 @@
  * Time: 16:04
  */
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -19,6 +20,14 @@ namespace Ouda.Client.Controls
 	/// </summary>
 	public partial class InputNewPersonControl : UserControl
 	{
+		public event EventHandler Submit;
+		protected virtual void OnSubmit()
+		{
+			var handler = Submit;
+			if (handler != null)
+				handler(this, new EventArgs());
+		}
+		
 		public InputNewPersonControl()
 		{
 			InitializeComponent();
@@ -27,18 +36,43 @@ namespace Ouda.Client.Controls
 			combo_gender.SelectedItem = Gender.Unspecified;
 			
 			combo_hepB.DataSource = Enum.GetValues(typeof(HepBResult));
-			combo_hepB.SelectedItem = HepBResult.Inconclusive;
+			combo_hepB.SelectedItem = HepBResult.Negative;
+			
+//			combo_bloodType.DataSource = Enum.GetValues(typeof(BloodType));
+//			combo_bloodType.SelectedItem = BloodType.Unspecified;
+			
+			PopulateComboBox(combo_bloodType, BloodType.Unspecified);
+		}
+		
+		private void PopulateComboBox<TEnum>(ComboBox combo, TEnum defaultValue)
+		{
+			var values = Enum
+				.GetValues(typeof(TEnum))
+				.Cast<TEnum>()
+				.Select(v=>new Tuple<TEnum, string>(
+				        	v,
+				        	(Attribute.GetCustomAttribute(
+				        		v.GetType().GetField(v.ToString()), 
+				        		typeof(DescriptionAttribute)) 
+				        		as DescriptionAttribute)
+				        		.Description
+				))
+				.ToList();
+			
+			combo.DataSource = values;
+			combo.ValueMember = "Item1";
+			combo.DisplayMember = "Item2";
+			
+			combo.SelectedValue = defaultValue;
 		}
 
 		#region gui event handlers
 		
 		void InputFieldKeyDown(object sender, KeyEventArgs e)
 		{
-			if(e.KeyCode == Keys.Enter)
-			{
+			if (e.KeyCode == Keys.Enter) {
 				e.Handled = true;
-				if(!SelectNextControl((Control)sender, true, true,true, false))
-				{
+				if (!SelectNextControl((Control)sender, true, true, true, false)) {
 					Parent.SelectNextControl(this, true, true, true, true);
 				}
 			}
@@ -59,6 +93,105 @@ namespace Ouda.Client.Controls
 		{
 			e.Handled = TrySelectIndex((ComboBox)sender, e.KeyChar);
 		}
+		void BloodType_KeyDown(object sender, KeyEventArgs e)
+		{
+			BloodType currentType = (BloodType)combo_bloodType.SelectedValue;
+			BloodType? newType = BloodType.Unspecified;
+
+			var As = new HashSet<BloodType>(new BloodType[]{ BloodType.A_Pos, BloodType.A_Neg, BloodType.AB_Pos, BloodType.AB_Neg });
+			var Bs = new HashSet<BloodType>(new BloodType[]{ BloodType.B_Pos, BloodType.B_Neg, BloodType.AB_Pos, BloodType.AB_Neg });
+			var Ps = new HashSet<BloodType>(new BloodType[]{ BloodType.A_Pos, BloodType.B_Pos, BloodType.AB_Pos, BloodType.O_Pos });
+
+			var descs = Enum
+				.GetValues(typeof(BloodType))
+				.Cast<BloodType>()
+				.Select(t => new 
+					{
+						Type = t,
+						A = As.Contains(t), 
+						B = Bs.Contains(t), 
+						Pos = Ps.Contains(t),
+						Un = t == BloodType.Unspecified
+					})
+				.ToDictionary(t => t.Type, t => t);
+
+			var currentDesc = descs[currentType];
+
+			switch (e.KeyCode)
+			{
+				case Keys.A:
+					newType = descs.Values
+						.Where(t=>!t.Un)
+						.Where(t => t.A == !currentDesc.A
+							&& t.B == currentDesc.B
+							&& t.Pos == currentDesc.Pos)
+						.First()
+						.Type;
+					break;
+				case Keys.B:
+					newType = descs.Values
+						.Where(t=>!t.Un)
+						.Where(t => t.A == currentDesc.A
+							&& t.B == !currentDesc.B
+							&& t.Pos == currentDesc.Pos)
+						.First()
+						.Type;
+					break;
+				case Keys.O:
+					newType = descs.Values
+						.Where(t=>!t.Un)
+						.Where(t => t.Pos == currentDesc.Pos
+							&& !t.A
+							&& !t.B)
+						.First()
+						.Type;
+					break;
+				case Keys.Add:
+					newType = descs.Values
+						.Where(t=>!t.Un)
+						.Where(t => t.A == currentDesc.A
+							&& t.B == currentDesc.B
+							&& t.Pos == true)
+						.First()
+						.Type;
+					break;
+				case Keys.Subtract:
+				case Keys.OemMinus:
+					newType = descs.Values
+						.Where(t=>!t.Un)
+						.Where(t => t.A == currentDesc.A
+							&& t.B == currentDesc.B
+							&& t.Pos == false)
+						.First()
+						.Type;
+					break;
+				default:
+					newType = null;
+					break;
+			}
+
+			if (newType == null)
+				InputFieldKeyDown(sender, e);
+			else
+			{
+				combo_bloodType.SelectedIndex = 
+					combo_bloodType
+					.Items
+					.Cast<Tuple<BloodType, string>>()
+					.Select((t, i) => new{t,i})
+					.First(t => t.t.Item1 == newType)
+					.i;
+				e.Handled = true;
+				e.SuppressKeyPress = true;
+			}
+		}
+		
+		void InputNewPersonControlKeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Control && e.KeyCode == Keys.Enter) {
+				OnSubmit();
+			}
+		}
 		
 		#endregion
 		
@@ -74,11 +207,12 @@ namespace Ouda.Client.Controls
 		TextBoxBase FindTextbox(Control control)
 		{
 			TextBoxBase tb = control as TextBoxBase;
-			if(tb != null) return tb;
-			foreach (var childControl in control.Controls)
-			{
+			if (tb != null)
+				return tb;
+			foreach (var childControl in control.Controls) {
 				tb = FindTextbox(childControl as Control);
-				if(tb != null) return tb;
+				if (tb != null)
+					return tb;
 			}
 			return null;
 		}
@@ -86,11 +220,9 @@ namespace Ouda.Client.Controls
 		bool TrySelectIndex(ComboBox cb, char ch)
 		{
 			int index;
-			if(int.TryParse(ch.ToString(), out index))
-			{
-				if(1 <= index && index <= cb.Items.Count)
-				{
-					cb.SelectedIndex = index-1;
+			if (int.TryParse(ch.ToString(), out index)) {
+				if (1 <= index && index <= cb.Items.Count) {
+					cb.SelectedIndex = index - 1;
 					return true;
 				}
 			}
@@ -107,7 +239,6 @@ namespace Ouda.Client.Controls
 		
 		public void Reset()
 		{
-			lbl_time.Text = "";
 			tb_location.Text = "";
 			tb_name.Text = "";
 			num_age.Value = 0;
@@ -119,14 +250,14 @@ namespace Ouda.Client.Controls
 			num_bpSys.Value = 0;
 			num_bpDia.Value = 0;
 			num_bodyFat.Value = 0;
-			combo_hepB.SelectedItem = HepBResult.Inconclusive;
+			combo_hepB.SelectedItem = HepBResult.Negative;
+			num_bloodSugar.Value = 0;
 			tb_comment.Text = "";
 		}
 		
 		public PersonData GetNewPersonData()
 		{
-			var person =  new PersonData()
-			{
+			var person = new PersonData() {
 				Id = Guid.NewGuid(),
 				Time = DateTime.Now,
 				Location = tb_location.Text,

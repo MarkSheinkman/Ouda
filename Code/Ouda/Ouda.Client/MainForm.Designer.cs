@@ -44,7 +44,6 @@ namespace Ouda.Client
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.personInput = new Ouda.Client.Controls.InputNewPersonControl();
 			this.btn_next = new System.Windows.Forms.Button();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,20 +51,13 @@ namespace Ouda.Client
 			this.createSpreadsheetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.personInput = new Ouda.Client.Controls.InputNewPersonControl();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// personInput
-			// 
-			this.personInput.Location = new System.Drawing.Point(12, 27);
-			this.personInput.Name = "personInput";
-			this.personInput.Size = new System.Drawing.Size(267, 322);
-			this.personInput.TabIndex = 0;
-			this.personInput.Enter += new System.EventHandler(this.PersonInputEnter);
-			// 
 			// btn_next
 			// 
-			this.btn_next.Location = new System.Drawing.Point(204, 355);
+			this.btn_next.Location = new System.Drawing.Point(192, 397);
 			this.btn_next.Name = "btn_next";
 			this.btn_next.Size = new System.Drawing.Size(75, 23);
 			this.btn_next.TabIndex = 1;
@@ -80,7 +72,7 @@ namespace Ouda.Client
 			this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(282, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(274, 24);
 			this.menuStrip1.TabIndex = 2;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -120,13 +112,22 @@ namespace Ouda.Client
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.helpToolStripMenuItem.Text = "Help";
 			// 
+			// personInput
+			// 
+			this.personInput.Location = new System.Drawing.Point(12, 27);
+			this.personInput.Name = "personInput";
+			this.personInput.Size = new System.Drawing.Size(255, 364);
+			this.personInput.TabIndex = 3;
+			this.personInput.Submit += new System.EventHandler(this.PersonInputSubmit);
+			this.personInput.Enter += new System.EventHandler(this.PersonInputEnter);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(282, 381);
-			this.Controls.Add(this.btn_next);
+			this.ClientSize = new System.Drawing.Size(274, 427);
 			this.Controls.Add(this.personInput);
+			this.Controls.Add(this.btn_next);
 			this.Controls.Add(this.menuStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MainMenuStrip = this.menuStrip1;

@@ -3,8 +3,6 @@
  * User: user
  * Date: 25-Sep-14
  * Time: 16:02
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
 using System.Collections.Generic;
@@ -38,31 +36,7 @@ namespace Ouda.Client
 				
 			personInput.Setup("test location");	
 		}
-		
-		void Btn_nextClick(object sender, EventArgs e)
-		{
-			personInput.Enabled = false;
-			var personData = personInput.GetNewPersonData();
-			m_DataManager.SaveToFile(personData);
-			m_LastInputTime = DateTime.Now;
-			personInput.Reset();
-			personInput.Setup(personData.Location);
-			personInput.Enabled = true;
-			personInput.Focus();
-		}
-		
-		void MainFormFormClosing(object sender, FormClosingEventArgs e)
-		{
-			var dialogResult = MessageBox.Show(
-				this, 
-				"Exit Ouda?",
-				"Exit Ouda?",
-				MessageBoxButtons.OKCancel,
-				MessageBoxIcon.Asterisk);
-			
-			e.Cancel = dialogResult != DialogResult.OK;
-		}
-		
+
 		#region TSMI events
 		
 		void SettingsToolStripMenuItemClick(object sender, EventArgs e)
@@ -102,7 +76,44 @@ namespace Ouda.Client
 			form.Show();
 		}
 		
+		#endregion
+		
+		#region gui events
+		
+		void Btn_nextClick(object sender, EventArgs e)
+		{
+			submit();
+		}
+		
+		void PersonInputSubmit(object sender, EventArgs e)
+		{
+			submit();
+		}
+		
+		void MainFormFormClosing(object sender, FormClosingEventArgs e)
+		{
+			var dialogResult = MessageBox.Show(
+				this, 
+				"Exit Ouda?",
+				"Exit Ouda?",
+				MessageBoxButtons.OKCancel,
+				MessageBoxIcon.Asterisk);
+			
+			e.Cancel = dialogResult != DialogResult.OK;
+		}
 		
 		#endregion
+		
+		void submit()
+		{
+			personInput.Enabled = false;
+			var personData = personInput.GetNewPersonData();
+			m_DataManager.SaveToFile(personData);
+			m_LastInputTime = DateTime.Now;
+			personInput.Reset();
+			personInput.Setup(personData.Location);
+			personInput.Enabled = true;
+			personInput.Focus();
+		}
 	}
 }
