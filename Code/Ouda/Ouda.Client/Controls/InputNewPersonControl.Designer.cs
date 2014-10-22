@@ -41,6 +41,8 @@ namespace Ouda.Client.Controls
 		private System.Windows.Forms.TextBox tb_location;
 		private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.ComboBox combo_bloodType;
+		private System.Windows.Forms.TextBox tb_phoneNumber;
+		private System.Windows.Forms.Label label14;
 		
 		/// <summary>
 		/// Disposes resources used by the control.
@@ -90,6 +92,8 @@ namespace Ouda.Client.Controls
 			this.label1 = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
 			this.combo_bloodType = new System.Windows.Forms.ComboBox();
+			this.tb_phoneNumber = new System.Windows.Forms.TextBox();
+			this.label14 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.num_age)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_height)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_weight)).BeginInit();
@@ -118,7 +122,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label4
 			// 
-			this.label4.Location = new System.Drawing.Point(3, 84);
+			this.label4.Location = new System.Drawing.Point(3, 110);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(100, 23);
 			this.label4.TabIndex = 0;
@@ -126,7 +130,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label5
 			// 
-			this.label5.Location = new System.Drawing.Point(3, 110);
+			this.label5.Location = new System.Drawing.Point(3, 136);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(100, 23);
 			this.label5.TabIndex = 0;
@@ -134,7 +138,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label6
 			// 
-			this.label6.Location = new System.Drawing.Point(3, 136);
+			this.label6.Location = new System.Drawing.Point(3, 162);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(100, 23);
 			this.label6.TabIndex = 0;
@@ -142,7 +146,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label7
 			// 
-			this.label7.Location = new System.Drawing.Point(3, 162);
+			this.label7.Location = new System.Drawing.Point(3, 188);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(100, 23);
 			this.label7.TabIndex = 0;
@@ -150,7 +154,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label8
 			// 
-			this.label8.Location = new System.Drawing.Point(3, 188);
+			this.label8.Location = new System.Drawing.Point(3, 214);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(100, 23);
 			this.label8.TabIndex = 0;
@@ -158,7 +162,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label9
 			// 
-			this.label9.Location = new System.Drawing.Point(3, 214);
+			this.label9.Location = new System.Drawing.Point(3, 240);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(100, 23);
 			this.label9.TabIndex = 0;
@@ -166,7 +170,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label10
 			// 
-			this.label10.Location = new System.Drawing.Point(3, 240);
+			this.label10.Location = new System.Drawing.Point(3, 266);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(100, 23);
 			this.label10.TabIndex = 0;
@@ -174,7 +178,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label11
 			// 
-			this.label11.Location = new System.Drawing.Point(3, 267);
+			this.label11.Location = new System.Drawing.Point(3, 293);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(100, 23);
 			this.label11.TabIndex = 0;
@@ -182,7 +186,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label12
 			// 
-			this.label12.Location = new System.Drawing.Point(3, 321);
+			this.label12.Location = new System.Drawing.Point(3, 347);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(100, 23);
 			this.label12.TabIndex = 0;
@@ -198,7 +202,7 @@ namespace Ouda.Client.Controls
 			// 
 			// num_age
 			// 
-			this.num_age.Location = new System.Drawing.Point(95, 82);
+			this.num_age.Location = new System.Drawing.Point(95, 108);
 			this.num_age.Maximum = new decimal(new int[] {
 			1000,
 			0,
@@ -206,13 +210,13 @@ namespace Ouda.Client.Controls
 			0});
 			this.num_age.Name = "num_age";
 			this.num_age.Size = new System.Drawing.Size(154, 20);
-			this.num_age.TabIndex = 3;
+			this.num_age.TabIndex = 4;
 			this.num_age.Enter += new System.EventHandler(this.NumericUpDown_Enter);
 			this.num_age.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// num_height
 			// 
-			this.num_height.Location = new System.Drawing.Point(95, 108);
+			this.num_height.Location = new System.Drawing.Point(95, 134);
 			this.num_height.Maximum = new decimal(new int[] {
 			1000,
 			0,
@@ -220,14 +224,14 @@ namespace Ouda.Client.Controls
 			0});
 			this.num_height.Name = "num_height";
 			this.num_height.Size = new System.Drawing.Size(154, 20);
-			this.num_height.TabIndex = 4;
+			this.num_height.TabIndex = 5;
 			this.num_height.Enter += new System.EventHandler(this.NumericUpDown_Enter);
 			this.num_height.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// num_weight
 			// 
 			this.num_weight.DecimalPlaces = 2;
-			this.num_weight.Location = new System.Drawing.Point(95, 134);
+			this.num_weight.Location = new System.Drawing.Point(95, 160);
 			this.num_weight.Maximum = new decimal(new int[] {
 			1000,
 			0,
@@ -235,33 +239,33 @@ namespace Ouda.Client.Controls
 			0});
 			this.num_weight.Name = "num_weight";
 			this.num_weight.Size = new System.Drawing.Size(154, 20);
-			this.num_weight.TabIndex = 5;
+			this.num_weight.TabIndex = 6;
 			this.num_weight.Enter += new System.EventHandler(this.NumericUpDown_Enter);
 			this.num_weight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// num_bodyFat
 			// 
 			this.num_bodyFat.DecimalPlaces = 2;
-			this.num_bodyFat.Location = new System.Drawing.Point(95, 160);
+			this.num_bodyFat.Location = new System.Drawing.Point(95, 186);
 			this.num_bodyFat.Name = "num_bodyFat";
 			this.num_bodyFat.Size = new System.Drawing.Size(154, 20);
-			this.num_bodyFat.TabIndex = 6;
+			this.num_bodyFat.TabIndex = 7;
 			this.num_bodyFat.Enter += new System.EventHandler(this.NumericUpDown_Enter);
 			this.num_bodyFat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// num_bmi
 			// 
 			this.num_bmi.DecimalPlaces = 1;
-			this.num_bmi.Location = new System.Drawing.Point(95, 186);
+			this.num_bmi.Location = new System.Drawing.Point(95, 212);
 			this.num_bmi.Name = "num_bmi";
 			this.num_bmi.Size = new System.Drawing.Size(154, 20);
-			this.num_bmi.TabIndex = 7;
+			this.num_bmi.TabIndex = 8;
 			this.num_bmi.Enter += new System.EventHandler(this.NumericUpDown_Enter);
 			this.num_bmi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// num_bpSys
 			// 
-			this.num_bpSys.Location = new System.Drawing.Point(95, 212);
+			this.num_bpSys.Location = new System.Drawing.Point(95, 238);
 			this.num_bpSys.Maximum = new decimal(new int[] {
 			1000,
 			0,
@@ -269,23 +273,23 @@ namespace Ouda.Client.Controls
 			0});
 			this.num_bpSys.Name = "num_bpSys";
 			this.num_bpSys.Size = new System.Drawing.Size(72, 20);
-			this.num_bpSys.TabIndex = 8;
+			this.num_bpSys.TabIndex = 9;
 			this.num_bpSys.Enter += new System.EventHandler(this.NumericUpDown_Enter);
 			this.num_bpSys.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// num_bloodSugar
 			// 
 			this.num_bloodSugar.DecimalPlaces = 2;
-			this.num_bloodSugar.Location = new System.Drawing.Point(95, 238);
+			this.num_bloodSugar.Location = new System.Drawing.Point(95, 264);
 			this.num_bloodSugar.Name = "num_bloodSugar";
 			this.num_bloodSugar.Size = new System.Drawing.Size(154, 20);
-			this.num_bloodSugar.TabIndex = 10;
+			this.num_bloodSugar.TabIndex = 11;
 			this.num_bloodSugar.Enter += new System.EventHandler(this.NumericUpDown_Enter);
 			this.num_bloodSugar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// num_bpDia
 			// 
-			this.num_bpDia.Location = new System.Drawing.Point(177, 212);
+			this.num_bpDia.Location = new System.Drawing.Point(177, 238);
 			this.num_bpDia.Maximum = new decimal(new int[] {
 			1000,
 			0,
@@ -293,7 +297,7 @@ namespace Ouda.Client.Controls
 			0});
 			this.num_bpDia.Name = "num_bpDia";
 			this.num_bpDia.Size = new System.Drawing.Size(72, 20);
-			this.num_bpDia.TabIndex = 9;
+			this.num_bpDia.TabIndex = 10;
 			this.num_bpDia.Enter += new System.EventHandler(this.NumericUpDown_Enter);
 			this.num_bpDia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
@@ -301,21 +305,21 @@ namespace Ouda.Client.Controls
 			// 
 			this.combo_hepB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.combo_hepB.FormattingEnabled = true;
-			this.combo_hepB.Location = new System.Drawing.Point(95, 264);
+			this.combo_hepB.Location = new System.Drawing.Point(95, 290);
 			this.combo_hepB.Name = "combo_hepB";
 			this.combo_hepB.Size = new System.Drawing.Size(154, 21);
-			this.combo_hepB.TabIndex = 11;
+			this.combo_hepB.TabIndex = 12;
 			this.combo_hepB.Enter += new System.EventHandler(this.Combo_Enter);
 			this.combo_hepB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			this.combo_hepB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Combo_KeyPress);
 			// 
 			// tb_comment
 			// 
-			this.tb_comment.Location = new System.Drawing.Point(95, 318);
+			this.tb_comment.Location = new System.Drawing.Point(95, 344);
 			this.tb_comment.Multiline = true;
 			this.tb_comment.Name = "tb_comment";
 			this.tb_comment.Size = new System.Drawing.Size(154, 68);
-			this.tb_comment.TabIndex = 13;
+			this.tb_comment.TabIndex = 14;
 			this.tb_comment.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
 			// 
 			// combo_gender
@@ -349,7 +353,7 @@ namespace Ouda.Client.Controls
 			// 
 			// label13
 			// 
-			this.label13.Location = new System.Drawing.Point(3, 294);
+			this.label13.Location = new System.Drawing.Point(3, 320);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(100, 23);
 			this.label13.TabIndex = 0;
@@ -359,18 +363,36 @@ namespace Ouda.Client.Controls
 			// 
 			this.combo_bloodType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.combo_bloodType.FormattingEnabled = true;
-			this.combo_bloodType.Location = new System.Drawing.Point(95, 291);
+			this.combo_bloodType.Location = new System.Drawing.Point(95, 317);
 			this.combo_bloodType.Name = "combo_bloodType";
 			this.combo_bloodType.Size = new System.Drawing.Size(154, 21);
-			this.combo_bloodType.TabIndex = 12;
+			this.combo_bloodType.TabIndex = 13;
 			this.combo_bloodType.Enter += new System.EventHandler(this.Combo_Enter);
 			this.combo_bloodType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BloodType_KeyDown);
 			this.combo_bloodType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Combo_KeyPress);
+			// 
+			// tb_phoneNumber
+			// 
+			this.tb_phoneNumber.Location = new System.Drawing.Point(95, 82);
+			this.tb_phoneNumber.Name = "tb_phoneNumber";
+			this.tb_phoneNumber.Size = new System.Drawing.Size(154, 20);
+			this.tb_phoneNumber.TabIndex = 3;
+			this.tb_phoneNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputFieldKeyDown);
+			// 
+			// label14
+			// 
+			this.label14.Location = new System.Drawing.Point(3, 85);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(89, 23);
+			this.label14.TabIndex = 15;
+			this.label14.Text = "Phone Number";
 			// 
 			// InputNewPersonControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.label14);
+			this.Controls.Add(this.tb_phoneNumber);
 			this.Controls.Add(this.tb_location);
 			this.Controls.Add(this.combo_gender);
 			this.Controls.Add(this.num_bpDia);
@@ -399,7 +421,7 @@ namespace Ouda.Client.Controls
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.label2);
 			this.Name = "InputNewPersonControl";
-			this.Size = new System.Drawing.Size(255, 391);
+			this.Size = new System.Drawing.Size(255, 418);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputNewPersonControlKeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.num_age)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_height)).EndInit();

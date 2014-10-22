@@ -120,12 +120,10 @@ namespace Ouda.Client.Controls
 			switch (e.KeyCode)
 			{
 				case Keys.A:
-					newType = descs.Values
-						.Where(t=>!t.Un)
-						.Where(t => t.A == !currentDesc.A
-							&& t.B == currentDesc.B
-							&& t.Pos == currentDesc.Pos)
-						.First()
+					newType = descs.Values.Where(t => !t.Un)
+						.First(t => t.A == !currentDesc.A 
+						       && t.B == currentDesc.B
+						       && t.Pos == currentDesc.Pos)
 						.Type;
 					break;
 				case Keys.B:
@@ -241,6 +239,7 @@ namespace Ouda.Client.Controls
 		{
 			tb_location.Text = "";
 			tb_name.Text = "";
+			tb_phoneNumber.Text = "";
 			num_age.Value = 0;
 			combo_gender.SelectedItem = Gender.Unspecified;
 			num_height.Value = 0;
@@ -262,6 +261,7 @@ namespace Ouda.Client.Controls
 				Time = DateTime.Now,
 				Location = tb_location.Text,
 				Name = tb_name.Text,
+				PhoneNumber = tb_phoneNumber.Text,
 				Age = (int)num_age.Value,
 				Gender = ReadEnumValue<Gender>(combo_gender),
 				Height = (int)num_height.Value,

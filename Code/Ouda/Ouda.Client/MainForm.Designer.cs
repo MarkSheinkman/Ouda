@@ -57,7 +57,7 @@ namespace Ouda.Client
 			// 
 			// btn_next
 			// 
-			this.btn_next.Location = new System.Drawing.Point(192, 397);
+			this.btn_next.Location = new System.Drawing.Point(192, 453);
 			this.btn_next.Name = "btn_next";
 			this.btn_next.Size = new System.Drawing.Size(75, 23);
 			this.btn_next.TabIndex = 1;
@@ -116,7 +116,7 @@ namespace Ouda.Client
 			// 
 			this.personInput.Location = new System.Drawing.Point(12, 27);
 			this.personInput.Name = "personInput";
-			this.personInput.Size = new System.Drawing.Size(255, 364);
+			this.personInput.Size = new System.Drawing.Size(255, 420);
 			this.personInput.TabIndex = 3;
 			this.personInput.Submit += new System.EventHandler(this.PersonInputSubmit);
 			this.personInput.Enter += new System.EventHandler(this.PersonInputEnter);
@@ -125,7 +125,7 @@ namespace Ouda.Client
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(274, 427);
+			this.ClientSize = new System.Drawing.Size(274, 479);
 			this.Controls.Add(this.personInput);
 			this.Controls.Add(this.btn_next);
 			this.Controls.Add(this.menuStrip1);
